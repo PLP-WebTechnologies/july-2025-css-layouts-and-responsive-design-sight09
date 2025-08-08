@@ -1,0 +1,127 @@
+/* ========== Base Styles ========== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+
+/* ========== Grid Layout for Page ========== */
+body {
+  display: grid;
+  grid-template-areas:
+    "header"
+    "nav"
+    "main"
+    "footer";
+  grid-template-rows: auto auto 1fr auto;
+  min-height: 100vh;
+}
+
+/* Header */
+header {
+  grid-area: header;
+  background: #0044cc;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+}
+
+/* Navigation - Flexbox */
+nav {
+  grid-area: nav;
+  background: #222;
+}
+
+nav ul {
+  list-style: none;
+  display: flex; /* Flexbox for nav items */
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+nav li {
+  margin: 0.5rem;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+}
+
+nav a:hover {
+  background: #444;
+  border-radius: 4px;
+}
+
+/* Main Content - Grid with Sidebar */
+main {
+  grid-area: main;
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+/* Cards - Flexbox */
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.card {
+  flex: 1 1 calc(33.333% - 1rem);
+  background: #f5f5f5;
+  padding: 1rem;
+  border-radius: 6px;
+  min-width: 200px;
+}
+
+/* Sidebar */
+.sidebar {
+  background: #eee;
+  padding: 1rem;
+  border-radius: 6px;
+}
+
+/* Footer */
+footer {
+  grid-area: footer;
+  background: #222;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+}
+
+/* ========== Media Queries ========== */
+
+/* Tablet view */
+@media (max-width: 900px) {
+  main {
+    grid-template-columns: 2fr 1fr;
+  }
+  .card {
+    flex: 1 1 calc(50% - 1rem);
+  }
+}
+
+/* Mobile view */
+@media (max-width: 600px) {
+  main {
+    grid-template-columns: 1fr; /* Stack content and sidebar */
+  }
+  nav ul {
+    flex-direction: column;
+    align-items: center;
+  }
+  .card {
+    flex: 1 1 100%;
+  }
+}
